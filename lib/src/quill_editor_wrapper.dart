@@ -39,6 +39,7 @@ class QuillHtmlEditor extends StatefulWidget {
     this.padding = EdgeInsets.zero,
     this.hintTextPadding = EdgeInsets.zero,
     this.hintTextAlign = TextAlign.start,
+    this.navigationDelegate,
     this.onEditorResized,
     this.onEditingComplete,
     this.ensureVisible = false,
