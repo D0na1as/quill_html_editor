@@ -11,6 +11,8 @@ import 'package:quill_html_editor/src/utils/string_util.dart';
 import 'package:quill_html_editor/src/widgets/edit_table_drop_down.dart';
 import 'package:quill_html_editor/src/widgets/webviewx/src/webviewx_plus.dart';
 
+import 'widgets/webviewx/src/utils/webview_flutter_original_utils.dart';
+
 /// A typedef representing a loading builder function.
 ///
 /// A [LoadingBuilder] is a function that takes a [BuildContext] as an argument
@@ -153,6 +155,8 @@ class QuillHtmlEditor extends StatefulWidget {
   /// **Note** due to limitations of flutter webview at the moment, focus doesn't launch the keyboard in mobile, however, it will set the cursor at the end on focus.
   final bool? autoFocus;
 
+  final Function(NavigationDelegate)? navigationDelegate;
+
   @override
   QuillHtmlEditorState createState() => QuillHtmlEditorState();
 }
@@ -240,6 +244,7 @@ class QuillHtmlEditorState extends State<QuillHtmlEditor> {
           },
           ignoreAllGestures: false,
           width: width,
+          navigationDelegate: navigationDelegate,
           onWebViewCreated: (controller) => _webviewController = controller,
           onPageFinished: (src) {
             Future.delayed(const Duration(milliseconds: 100)).then((value) {
